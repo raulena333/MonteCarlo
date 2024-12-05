@@ -1,0 +1,39 @@
+TITLE  Detector cubico 1 cm de lado.
+       .
+       >>>>>>>> Source definition.
+SKPAR  2        [Primary particles: 1=electron, 2=photon, 3=positron]
+SPECTR 1e4  1.0e0         [E bin: lower-end and total probability]
+SPECTR 1e4  -1.0e0       [E bin: lower-end and total probability]
+SPOSIT 0 0 0                              [Coordinates of the source]
+SCONE  0 0 0                         [Conical beam; angles in deg]
+       .
+       >>>>>>>> Material data and simulation parameters.
+MFNAME mat/C4H8Cl2.mat                         [Material file, up to 20 chars]
+MSIMPA 1.0e5 1.0e3 1.0e5 0.1 0.1 1e4 1e3    [EABS(1:3),C1,C2,WCC,WCR]
+       .
+       >>>>>>>> Geometry definition file.
+GEOMFN geo/cubo1.geo
+       >>>>>>>> Emerging particles. Energy and angular distributions.
+NBE    0.0 1.0e6 100                  [Energy window and no. of bins]
+NBANGL 180 180               [No. of bins for the angles THETA and PHI]
+       .
+       >>>>>>>> Impact detectors (up to 25 different detectors).
+       IPSF=0; no psf is created.
+       IPSF=1; the psf is created.
+       IDCUT=0; tracking is discontinued at the detector entrance.
+       IDCUT=1; the detector does not affect the tracking.
+       IDCUT=2; the detector does not affect tracking, the energy
+                distribution of particle fluence (averaged over the
+                volume of the detector) is calculated.
+IMPDET 0.8e4 1.2e4 160 0 2         [E-window, no. of bins, IPSF, IDCUT]
+IDBODY 1                        [Active body; one line for each body]                       [Active body; one line for each body]            
+       .
+       >>>>>>>> Energy deposition detectors (up to 25).
+ENDETC 0.0 1.2e4 300               [Energy window and number of bins]
+EDBODY 1                        [Active body; one line for each body]
+       .
+       >>>>>>>> Job properties
+NSIMSH 1e6                      [Desired number of simulated showers]
+TIME   2e9                         [Allotted simulation time, in sec]
+       .
+END                                  [Ends the reading of input data]
